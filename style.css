@@ -1,0 +1,52 @@
+.Contenedor {
+    display        : flex;
+    width          : 100%;
+    justify-content: center;
+}
+
+.item {
+    width      : 20%;
+    height     : 220px;
+    margin     : 5px;
+    text-align : center;
+    line-height: 100px;
+}
+
+.imageQuestion {
+    background-image   : url('img/question.png');
+    background-size    : cover;
+    background-position: center;
+}
+
+.flip {
+    position        : relative;
+    transition      : all 1s ease;
+    transform       : perspective(600px);
+    transform-origin: 100% 50%;
+    transform-style : preserve-3d;
+    border          : 4px double teal;
+    border-radius   : 25px;
+    margin          : 5px;
+    padding         : 5px;
+}
+
+.flipped {
+    transform: perspective(600px) rotateY(-180deg) translateX(100%);
+}
+
+.flip .flip-1,
+.flip .flip-2 {
+    position           : absolute;
+    backface-visibility: hidden;
+}
+
+.flip .flip-2 {
+    transform : rotateY(-180deg);
+}
+
+.flip_1, .flip_2, .flip_3, .flip_4, .flip_5, .flip_6, .flip_7, 
+.flip_8, .flip_9, .flip_10, .flip_11, .flip_12,
+.flip-1, .flip-2 {
+    width : 190px;
+    height: 220px;
+} 
