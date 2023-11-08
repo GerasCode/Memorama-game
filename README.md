@@ -16,7 +16,7 @@ Hi 👋  I´m Gerardo Terrazas Ortega. System Developer México
 
 # view game
 
-👉 [Memorama-game](https://gerascode.github.io/Memorama-game/Index.html)
+👉 [Memorama-game](https://gerascode.github.io/Memorama-game/)
 
 ## License
 MIT Public License
