@@ -14,7 +14,7 @@ Hi 👋  I´m Gerardo Terrazas Ortega. System Developer México
 	<code><img width="50" src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" alt="TypeScript" title="TypeScript"/></code>
 </div>
 
-# view game
+# View game
 
 👉 [Memorama-game](https://gerascode.github.io/Memorama-game/)
 
