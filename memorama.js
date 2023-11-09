@@ -1,3 +1,7 @@
+let intervalId; 
+let selected = "";
+let errores  = 0;
+
 shuffleArray = (array) => {
     for ( let i = array.length - 1; i > 0; i-- ) 
     {
@@ -9,6 +13,8 @@ shuffleArray = (array) => {
 
 function createHTMLStructure() 
 {
+    document.getElementById("Contenedores").innerHTML = "";
+
     const imagenes           = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
     const imagenesDuplicadas = [...imagenes, ...imagenes];
 
@@ -22,7 +28,7 @@ function createHTMLStructure()
       for ( let j = 1; j <= 4; j++ ) 
       {
         const flip     = document.createElement('div');
-        flip.className = `flip flip_${4 * (i - 1) + j}`;
+        flip.className = `flip flipSize flip_${4 * (i - 1) + j}`;
   
         flip.onclick = clickflipped;
           
@@ -47,8 +53,6 @@ function createHTMLStructure()
       document.getElementById("Contenedores").appendChild(contenedor);
     }
 }
-
-let selected = "";
 
 function clickflipped()
 {
@@ -78,6 +82,7 @@ function clickflipped()
 
         if( elementos.length == 12 )
         {
+            stopChronometer();
             setTimeout( () => alert( "Successful Game" ), 100);
         }
     }
@@ -87,6 +92,7 @@ function clickflipped()
 		{
             const elementos = Array.from(document.getElementsByClassName('flipped'));
 
+            let isError = false;
             for ( let i = 0; i < elementos.length; i++ ) 
             {
                 var _att = elementos[i].getAttribute('nameimg');
@@ -94,13 +100,76 @@ function clickflipped()
                 if ( _att == att || _att == selected )
                 {
                     elementos[i].classList.toggle('flipped')
+                    isError = true;
+                    
                 }
             }
 			
+            if( isError )
+            {
+                errores += 1;
+                document.getElementById('totalErrores').textContent = errores;
+            }
+
             selected = "";
 			
         }, 1000);
     }
 }
 
+function formatTime(seconds) {
+    const hours            = Math.floor(seconds / 3600);
+    const minutes          = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+
+    const formattedHours   = hours   < 10 ? `0${hours}`   : hours;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+function startChronometer() {
+    let seconds = 0;
+
+    selected = "";
+
+    createHTMLStructure();
+    habilitaDiv();
+
+    intervalId = setInterval(() => 
+    {
+        seconds++;
+        document.getElementById('cronometro').innerText = formatTime(seconds);
+    }, 1000);
+}
+
+function stopChronometer() 
+{
+    clearInterval(intervalId);
+    deshabilitaDiv();
+}
+
+function habilitaDiv()
+{
+    var c = document.getElementById("Contenedores");
+
+    c.style.pointerEvents = 'auto';
+    c.style.opacity = '1';
+
+    document.getElementById('startButton').disabled = true;
+}
+
+function deshabilitaDiv()
+{
+    var c = document.getElementById("Contenedores");
+
+    c.style.pointerEvents = 'none';
+    c.style.opacity = '0.5';
+
+    document.getElementById('startButton').disabled = false;
+}
+
 createHTMLStructure();
+deshabilitaDiv();
+

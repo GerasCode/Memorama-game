@@ -5,10 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorama</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="Contenedores"></div> 
+    <nav>
+        <ul>
+            <li class="centerLi">
+                <span>
+                    Tiempo:
+                    <span id="cronometro">00:00:00</span>
+                </span>
+            </li>
+            <li class="centerLi">
+                <span>
+                    Errores:
+                    <span id="totalErrores">0</span>
+                </span>
+            </li>
+            <li class="start">
+                <button id="startButton" onclick="startChronometer()">Iniciar</button>
+            </li>
+        </ul>
+    </nav>
+    <div id="Contenedores">
+        
+    </div> 
 
     <script src="memorama.js"></script>
 </body>
