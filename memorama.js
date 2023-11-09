@@ -133,6 +133,9 @@ function startChronometer() {
     let seconds = 0;
 
     selected = "";
+    errores  = 0;
+    
+    document.getElementById('totalErrores').textContent = errores;
 
     createHTMLStructure();
     habilitaDiv();
